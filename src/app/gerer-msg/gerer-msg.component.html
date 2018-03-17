@@ -1,0 +1,29 @@
+<table border="2" cellpadding="10">
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th>Objet</th>
+      <th>Text</th>
+      <th>Delete</th>
+    </tr>
+  
+    <tr *ngFor="let msg of messages | async">
+      <td>{{msg.id}}</td>
+      <td><a [href]="'voirMsg/'+msg.id" >{{msg.email}}</a></td>
+      <td>{{msg.objet}}</td>
+      <td>{{msg.text}}</td>
+      <td><button (click)="supprimerMsg(msg.id)">X</button></td>
+    </tr>
+  
+  
+  </table>
+  
+  <h1>Ajout</h1>
+  
+  <form>
+  
+    Email: <input type="email" name="email" [(ngModel)]="email"><br><br>
+    Objet: <input type="text" name="objet" [(ngModel)]="objet"><br><br>
+    Text: <textarea cols="40" rows="10" name="text" [(ngModel)]="text"></textarea><br><br>
+    <button (click)="ajouterMsg()">Ajout</button>
+  </form>
